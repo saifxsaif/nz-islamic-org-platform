@@ -141,3 +141,8 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Documentation files (except README)
+BUILD_SUMMARY.md
+DEPLOYMENT.md
+MAINTENANCE.md
