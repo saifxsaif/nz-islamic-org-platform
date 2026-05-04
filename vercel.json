@@ -3,28 +3,24 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "env": [
-    {
-      "key": "NEXT_PUBLIC_SITE_URL",
+  "env": {
+    "NEXT_PUBLIC_SITE_URL": {
       "description": "The production URL of the website",
       "value": "https://nelsonislamicsociety.org.nz"
     },
-    {
-      "key": "CONTACT_EMAIL",
+    "CONTACT_EMAIL": {
       "description": "Email address to receive contact form submissions",
       "value": "contact@nelsonislamicsociety.org.nz"
     },
-    {
-      "key": "RESEND_API_KEY",
+    "RESEND_API_KEY": {
       "description": "API key for Resend email service (optional if using SendGrid)",
       "value": ""
     },
-    {
-      "key": "SENDGRID_API_KEY",
+    "SENDGRID_API_KEY": {
       "description": "API key for SendGrid email service (optional if using Resend)",
       "value": ""
     }
-  ],
+  },
   "headers": [
     {
       "source": "/(.*)",
