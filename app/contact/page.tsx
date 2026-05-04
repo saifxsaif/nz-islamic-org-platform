@@ -1,15 +1,26 @@
-import type { Metadata } from "next";
+"use client";
+
+import { motion } from "framer-motion";
 import { ContactForm } from "@/components/ContactForm";
 import { Mail, Phone, MapPin } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Contact Us | Nelson Islamic Cultural Society",
-  description:
-    "Get in touch with the Nelson Islamic Cultural Society. Send us a message or find our contact information.",
-  openGraph: {
-    title: "Contact Us | Nelson Islamic Cultural Society",
-    description: "Get in touch with us. We'd love to hear from you!",
-    url: "/contact",
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
   },
 };
 
@@ -17,27 +28,72 @@ export default function ContactPage() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-600 to-primary-700 text-white py-16 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="text-lg text-primary-100">
-            We'd love to hear from you. Get in touch with us today!
-          </p>
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-20">
+        {/* Animated background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-blue-50">
+          <motion.div
+            className="absolute top-20 left-10 w-72 h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+            animate={{ y: [0, 50, 0], x: [0, 30, 0] }}
+            transition={{ duration: 8, repeat: Infinity }}
+          />
+          <motion.div
+            className="absolute top-40 right-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+            animate={{ y: [0, -50, 0], x: [0, -30, 0] }}
+            transition={{ duration: 8, repeat: Infinity, delay: 2 }}
+          />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-primary-600 via-primary-700 to-blue-600 bg-clip-text text-transparent">
+                Get in
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-blue-600 via-primary-600 to-primary-700 bg-clip-text text-transparent">
+                Touch
+              </span>
+            </h1>
+
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+              We'd love to hear from you. Reach out to us today!
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Information */}
-            <div className="lg:col-span-1">
+            <motion.div
+              className="lg:col-span-1"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
               <h2 className="text-2xl font-bold text-gray-900 mb-8">Contact Information</h2>
 
-              <div className="space-y-8">
+              <motion.div
+                className="space-y-8"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
                 {/* Email */}
-                <div className="flex gap-4">
-                  <Mail className="text-primary-600 flex-shrink-0 mt-1" size={24} />
+                <motion.div className="flex gap-4" variants={itemVariants}>
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-primary-100">
+                      <Mail className="text-primary-600" size={24} />
+                    </div>
+                  </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
                     <a
@@ -47,71 +103,118 @@ export default function ContactPage() {
                       contact@nelsonislamicsociety.org.nz
                     </a>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Phone */}
-                <div className="flex gap-4">
-                  <Phone className="text-primary-600 flex-shrink-0 mt-1" size={24} />
+                <motion.div className="flex gap-4" variants={itemVariants}>
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-primary-100">
+                      <Phone className="text-primary-600" size={24} />
+                    </div>
+                  </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
                     <a href="tel:+64" className="text-gray-600 hover:text-primary-600 transition-colors">
                       +64 (0) 3 XXXX XXXX
                     </a>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Location */}
-                <div className="flex gap-4">
-                  <MapPin className="text-primary-600 flex-shrink-0 mt-1" size={24} />
+                <motion.div className="flex gap-4" variants={itemVariants}>
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-primary-100">
+                      <MapPin className="text-primary-600" size={24} />
+                    </div>
+                  </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Location</h3>
                     <p className="text-gray-600">Nelson, New Zealand</p>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
               {/* Response Time */}
-              <div className="mt-8 p-4 bg-primary-50 rounded-lg">
+              <motion.div
+                className="mt-8 p-6 bg-gradient-to-br from-primary-50 to-blue-50 rounded-2xl border border-primary-100"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
                 <p className="text-sm text-gray-700">
                   <strong>Response Time:</strong> We typically respond to inquiries within 24-48 hours during
                   business days.
                 </p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Contact Form */}
-            <div className="lg:col-span-2">
+            <motion.div
+              className="lg:col-span-2"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
               <h2 className="text-2xl font-bold text-gray-900 mb-8">Send us a Message</h2>
               <p className="text-gray-600 mb-8">
                 Have a question or want to get involved? Fill out the form below and we'll get back to you as
                 soon as possible.
               </p>
               <ContactForm />
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Additional Information */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
         <div className="mx-auto max-w-4xl">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Other Ways to Connect</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Other Ways to Connect</h2>
+            <p className="text-lg text-gray-600">Explore different ways to engage with our community</p>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.div
+              className="bg-white rounded-2xl p-8 border border-gray-100 hover:border-primary-200 transition-all"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+            >
+              <div className="text-4xl mb-4">🏢</div>
               <h3 className="text-lg font-semibold text-gray-900 mb-3">Visit Us</h3>
               <p className="text-gray-600">
                 You're welcome to visit our community center. Please contact us in advance to arrange a visit
                 or to learn about our visiting hours.
               </p>
-            </div>
-            <div>
+            </motion.div>
+
+            <motion.div
+              className="bg-white rounded-2xl p-8 border border-gray-100 hover:border-primary-200 transition-all"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+            >
+              <div className="text-4xl mb-4">🎉</div>
               <h3 className="text-lg font-semibold text-gray-900 mb-3">Attend Our Events</h3>
               <p className="text-gray-600">
                 Join us at our community events and gatherings. Check back regularly for information about
                 upcoming events and activities.
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </div>
