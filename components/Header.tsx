@@ -29,17 +29,23 @@ export function Header() {
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 font-bold text-xl">
+          <Link href="/" className="flex items-center gap-2 font-bold text-xl">
             <motion.div
-              className="h-10 w-10 rounded-full bg-gradient-to-br from-primary-600 to-primary-700 flex items-center justify-center text-white text-lg font-bold"
-              whileHover={{ scale: 1.1 }}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-primary-200 shadow-sm hover:shadow-md hover:border-primary-300 transition-all"
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              ☪
+              <div className="h-9 w-9 flex items-center justify-center flex-shrink-0">
+                <img
+                  src="/nics.jpg"
+                  alt="NICS Logo"
+                  className="h-9 w-9 object-contain"
+                />
+              </div>
+              <span className="hidden sm:inline text-primary-700 font-semibold text-xs leading-tight">
+                Nelson Islamic<br />Cultural Society
+              </span>
             </motion.div>
-            <span className="hidden sm:inline bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent">
-              NICS
-            </span>
           </Link>
 
           {/* Desktop Navigation */}

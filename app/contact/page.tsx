@@ -29,18 +29,15 @@ export default function ContactPage() {
     <div className="w-full">
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-20">
-        {/* Animated background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-blue-50">
-          <motion.div
-            className="absolute top-20 left-10 w-72 h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
-            animate={{ y: [0, 50, 0], x: [0, 30, 0] }}
-            transition={{ duration: 8, repeat: Infinity }}
-          />
-          <motion.div
-            className="absolute top-40 right-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
-            animate={{ y: [0, -50, 0], x: [0, -30, 0] }}
-            transition={{ duration: 8, repeat: Infinity, delay: 2 }}
-          />
+        {/* Background Image with Overlay */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/getintouch.jpg')",
+          }}
+        >
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-900/70 via-primary-800/60 to-blue-900/70" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
@@ -49,17 +46,13 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-primary-600 via-primary-700 to-blue-600 bg-clip-text text-transparent">
-                Get in
-              </span>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white">
+              Get in
               <br />
-              <span className="bg-gradient-to-r from-blue-600 via-primary-600 to-primary-700 bg-clip-text text-transparent">
-                Touch
-              </span>
+              Touch
             </h1>
 
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-white mb-8 max-w-2xl mx-auto leading-relaxed">
               We'd love to hear from you. Reach out to us today!
             </p>
           </motion.div>
@@ -129,7 +122,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Location</h3>
-                    <p className="text-gray-600">Nelson, New Zealand</p>
+                    <p className="text-gray-600">Old St John's Church, Back Hall of 320 Hardy Street, Nelson, New Zealand, 7010</p>
                   </div>
                 </motion.div>
               </motion.div>

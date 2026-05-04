@@ -31,18 +31,15 @@ export default function Home() {
     <div className="w-full">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        {/* Animated background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-blue-50">
-          <motion.div
-            className="absolute top-20 left-10 w-72 h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
-            animate={{ y: [0, 50, 0], x: [0, 30, 0] }}
-            transition={{ duration: 8, repeat: Infinity }}
-          />
-          <motion.div
-            className="absolute top-40 right-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
-            animate={{ y: [0, -50, 0], x: [0, -30, 0] }}
-            transition={{ duration: 8, repeat: Infinity, delay: 2 }}
-          />
+        {/* Background Image with Overlay */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/coverpage.jpg')",
+          }}
+        >
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-900/70 via-primary-800/60 to-blue-900/70" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
@@ -52,23 +49,19 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <motion.div
-              className="inline-block mb-6 px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-semibold"
+              className="inline-block mb-6 px-4 py-2 bg-white/20 text-white rounded-full text-sm font-semibold backdrop-blur-sm"
               whileHover={{ scale: 1.05 }}
             >
               Welcome to Our Community
             </motion.div>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-primary-600 via-primary-700 to-blue-600 bg-clip-text text-transparent">
-                Nelson Islamic
-              </span>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white">
+              Nelson Islamic
               <br />
-              <span className="bg-gradient-to-r from-blue-600 via-primary-600 to-primary-700 bg-clip-text text-transparent">
-                Cultural Society
-              </span>
+              Cultural Society
             </h1>
 
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-white mb-8 max-w-2xl mx-auto leading-relaxed">
               Building community, sharing culture, and fostering understanding in Nelson, New Zealand
             </p>
 
@@ -80,7 +73,7 @@ export default function Home() {
             >
               <motion.a
                 href="/about"
-                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-white text-primary-600 px-8 py-4 rounded-xl font-semibold border-2 border-primary-200 hover:border-primary-600 hover:shadow-lg transition-all"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
